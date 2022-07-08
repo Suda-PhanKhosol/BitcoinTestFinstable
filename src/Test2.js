@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CanvasJSReact from "./assets/canvasjs.react";
-import { Button, Grid, Typography } from "@material-ui/core";
+import { Button, Grid, Typography, Paper } from "@material-ui/core";
 import ArrowBack from "@material-ui/icons/ArrowBack";
 
 require("dayjs/locale/th");
@@ -144,25 +144,28 @@ class Test2 extends React.Component {
         <Grid
           container
           direction="row"
-          alignItems="flex-end"
           justifyContent="flex-end"
+          alignItems="flex-end"
+          style={{ padding: 20 }}
         >
-          <Button
-            onClick={() => {
-              props.updateSearch(false, false, false);
-            }}
-            style={{
-              backgroundColor: "#666666",
-              color: "white",
-              fontSize: 20,
-              fontWeight: "bold",
-            }}
-            size="medium"
-            fullWidth
-            startIcon={<ArrowBack />}
-          >
-            Back
-          </Button>
+          <Grid item md={1} justifyContent="flex-end">
+            <Button
+              onClick={() => {
+                this.props.updateSearch(false, false, false);
+              }}
+              style={{
+                backgroundColor: "#666666",
+                color: "white",
+                fontSize: 20,
+                fontWeight: "bold",
+              }}
+              size="medium"
+              fullWidth
+              startIcon={<ArrowBack />}
+            >
+              Back
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     );

@@ -1,10 +1,29 @@
 import React from "react";
-import { Button, Grid, Typography, TextField } from "@material-ui/core";
+import { Button, Grid, Typography, TextField, Paper } from "@material-ui/core";
 import axios from "axios";
 import ArrowBack from "@material-ui/icons/ArrowBack";
 import Payment from "@material-ui/icons/Payment";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(1),
+    padding: theme.spacing(2),
+    height: "auto",
+    pacity: 0.5,
+    // backgroundColor: "rgba(250, 184, 218, 0.4)",
+  },
+  textColumnHeader: {
+    fontFamily: "sarabun",
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#FFFFFF",
+  },
+}));
 
 export default function Test3(props) {
+  const classes = useStyles();
+
   const [input, setInput] = React.useState(0);
   const [output, setOutput] = React.useState(0);
   const [dataAsks, setDataAsks] = React.useState();
@@ -82,86 +101,91 @@ export default function Test3(props) {
   }, [props]);
 
   return (
-    <Grid container style={{ padding: 20 }}>
-      <Grid
-        container
-        direction="row"
-        alignItems="flex-start"
-        justifyContent="center"
-        style={{ height: 400 }}
-      >
-        <Typography
-          style={{ fontSize: 50, color: "black", fontWeight: "bold" }}
-        >
-          Test 3
-        </Typography>
-        <br />
-        <Grid container direction="row" alignItems="center">
-          <Grid item md={4}>
-            <Typography style={{ fontSize: 30, color: "black" }}>
-              Input USDT:
+    <div>
+      <Grid container style={{ padding: 20 }}>
+        <Paper elevation={3} className={classes.paper}>
+          <Grid
+            container
+            direction="row"
+            alignItems="flex-start"
+            justifyContent="center"
+            style={{ height: 400 }}
+          >
+            <Typography
+              style={{ fontSize: 50, color: "black", fontWeight: "bold" }}
+            >
+              Test 3
             </Typography>
-          </Grid>
-          <Grid item md={6}>
-            <Grid container spacing={2}>
-              <Grid item md={8}>
+            <br />
+            <Grid container direction="row" alignItems="center">
+              <Grid item md={4}>
+                <Typography style={{ fontSize: 30, color: "black" }}>
+                  Input USDT:
+                </Typography>
+              </Grid>
+              <Grid item md={6}>
+                <Grid container spacing={2}>
+                  <Grid item md={8}>
+                    <TextField
+                      id="standard-basic"
+                      label=""
+                      variant="outlined"
+                      name="usdtAmount"
+                      onChange={(e) => {
+                        setInput(e.target.value);
+                      }}
+                      fullWidth
+                    />
+                  </Grid>
+                  <Grid item md={4}>
+                    <Button
+                      onClick={() => {
+                        calculateOutputAmount(input);
+                      }}
+                      style={{
+                        backgroundColor: "#20a167",
+                        color: "white",
+                        fontSize: 20,
+                        fontWeight: "bold",
+                      }}
+                      fullWidth
+                      size="large"
+                      startIcon={<Payment style={{ color: "yellow" }} />}
+                    >
+                      Buy
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid container direction="row">
+              <Grid item md={4}>
+                <Typography style={{ fontSize: 30, color: "black" }}>
+                  Output BTC :
+                </Typography>
+              </Grid>
+              <Grid item md={4}>
                 <TextField
                   id="standard-basic"
-                  label=""
                   variant="outlined"
-                  name="usdtAmount"
-                  onChange={(e) => {
-                    setInput(e.target.value);
-                  }}
                   fullWidth
+                  disabled
+                  value={output}
+                  style={{ fontSize: 20 }}
                 />
-              </Grid>
-              <Grid item md={3}>
-                <Button
-                  onClick={() => {
-                    calculateOutputAmount(input);
-                  }}
-                  style={{
-                    backgroundColor: "#20a167",
-                    color: "white",
-                    fontSize: 20,
-                    fontWeight: "bold",
-                  }}
-                  fullWidth
-                  size="large"
-                  startIcon={<Payment style={{ color: "yellow" }} />}
-                >
-                  Buy
-                </Button>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid container direction="row">
-          <Grid item md={4}>
-            <Typography style={{ fontSize: 30, color: "black" }}>
-              Output BTC :
-            </Typography>
-          </Grid>
-          <Grid item md={4}>
-            <TextField
-              id="standard-basic"
-              variant="outlined"
-              fullWidth
-              disabled
-              value={output}
-              style={{ fontSize: 20 }}
-            />
-          </Grid>
-        </Grid>
+        </Paper>
       </Grid>
       <Grid
         container
         direction="row"
-        alignItems="flex-end"
         justifyContent="flex-end"
+        alignItems="flex-end"
+        style={{ padding: 20 }}
       >
-        <Grid item md={1} justifyContent="flex-end">
+        <Grid item md={2} justifyContent="flex-end">
           <Button
             onClick={() => {
               props.updateSearch(false, false, false);
@@ -180,6 +204,6 @@ export default function Test3(props) {
           </Button>
         </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 }
