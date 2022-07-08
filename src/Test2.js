@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CanvasJSReact from "./assets/canvasjs.react";
 import { Button, Grid, Typography } from "@material-ui/core";
+import ArrowBack from "@material-ui/icons/ArrowBack";
 
 require("dayjs/locale/th");
 var utc = require("dayjs/plugin/utc");
@@ -148,14 +149,17 @@ class Test2 extends React.Component {
         >
           <Button
             onClick={() => {
-              this.props.updateSearch(false, false, false);
+              props.updateSearch(false, false, false);
             }}
             style={{
-              backgroundColor: "#4287f5",
+              backgroundColor: "#666666",
               color: "white",
               fontSize: 20,
               fontWeight: "bold",
             }}
+            size="medium"
+            fullWidth
+            startIcon={<ArrowBack />}
           >
             Back
           </Button>

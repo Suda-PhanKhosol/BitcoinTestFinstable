@@ -14,7 +14,6 @@ export default function App() {
   const [ftxData, setFtxData] = React.useState();
   const [binanceData, setBinanceData] = React.useState();
   const [candleStickData, setCandleStickData] = React.useState();
-  const [orderBook, setOrderBook] = React.useState();
 
   //Test1
   const getFTX = () => {
@@ -58,21 +57,6 @@ export default function App() {
       });
   };
 
-  //Test3
-  const getOrderBook = () => {
-    console.log("getOrderBook");
-
-    axios
-      .get("https://api1.binance.com/api/v3/depth?symbol=BTCUSDT")
-      .then((res) => {
-        console.log(res);
-        setOrderBook(res.data);
-      })
-      .catch((err) => {
-        throw err;
-      });
-  };
-
   const ShowTest = (num) => {
     console.log(num);
     if (num === 1) {
@@ -102,7 +86,6 @@ export default function App() {
     getBinance();
     getFTX();
     getCandleStickData();
-    getOrderBook();
   }, []);
 
   return (
@@ -114,7 +97,7 @@ export default function App() {
               <Button
                 size="large"
                 style={{
-                  backgroundColor: "#4287f5",
+                  backgroundColor: "#62b59c",
                   color: "white",
                   fontSize: 40,
                   fontWeight: "bold",
@@ -124,14 +107,14 @@ export default function App() {
                   ShowTest(1);
                 }}
               >
-                Test 1
+                Test 1 (Simple)
               </Button>
             </Grid>
             <Grid item md={3}>
               <Button
                 size="large"
                 style={{
-                  backgroundColor: "#4287f5",
+                  backgroundColor: "#ccca5a",
                   color: "white",
                   fontSize: 40,
                   borderRadius: 18,
@@ -141,14 +124,14 @@ export default function App() {
                   ShowTest(2);
                 }}
               >
-                Test 2
+                Test 2 (Medium)
               </Button>
             </Grid>
             <Grid item md={3}>
               <Button
                 size="large"
                 style={{
-                  backgroundColor: "#4287f5",
+                  backgroundColor: "#d1525e",
                   color: "white",
                   fontWeight: "bold",
                   borderRadius: 18,
@@ -158,7 +141,7 @@ export default function App() {
                   ShowTest(3);
                 }}
               >
-                Test 3
+                Test 3 (Hard)
               </Button>
             </Grid>
           </Grid>
@@ -178,10 +161,7 @@ export default function App() {
           ></Test2>
         )}
         {isTest3 && (
-          <Test3
-            orderBook={orderBook}
-            updateSearch={handleUpdateSearch.bind(this)}
-          ></Test3>
+          <Test3 updateSearch={handleUpdateSearch.bind(this)}></Test3>
         )}
       </header>
     </div>

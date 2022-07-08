@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Grid, Typography } from "@material-ui/core";
+import ArrowBack from "@material-ui/icons/ArrowBack";
 
 export default function Test1(props) {
   const [diff, setDiff] = React.useState();
@@ -83,11 +84,14 @@ export default function Test1(props) {
             props.updateSearch(false, false, false);
           }}
           style={{
-            backgroundColor: "#4287f5",
+            backgroundColor: "#666666",
             color: "white",
             fontSize: 20,
             fontWeight: "bold",
           }}
+          size="medium"
+          fullWidth
+          startIcon={<ArrowBack />}
         >
           Back
         </Button>

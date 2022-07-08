@@ -1,6 +1,8 @@
 import React from "react";
 import { Button, Grid, Typography, TextField } from "@material-ui/core";
 import axios from "axios";
+import ArrowBack from "@material-ui/icons/ArrowBack";
+import Payment from "@material-ui/icons/Payment";
 
 export default function Test3(props) {
   const [input, setInput] = React.useState(0);
@@ -114,21 +116,22 @@ export default function Test3(props) {
                   fullWidth
                 />
               </Grid>
-              <Grid item md={4}>
+              <Grid item md={3}>
                 <Button
                   onClick={() => {
                     calculateOutputAmount(input);
                   }}
                   style={{
-                    backgroundColor: "#4287f5",
+                    backgroundColor: "#20a167",
                     color: "white",
                     fontSize: 20,
                     fontWeight: "bold",
                   }}
                   fullWidth
                   size="large"
+                  startIcon={<Payment style={{ color: "yellow" }} />}
                 >
-                  Calculate Output
+                  Buy
                 </Button>
               </Grid>
             </Grid>
@@ -158,19 +161,24 @@ export default function Test3(props) {
         alignItems="flex-end"
         justifyContent="flex-end"
       >
-        <Button
-          onClick={() => {
-            props.updateSearch(false, false, false);
-          }}
-          style={{
-            backgroundColor: "#4287f5",
-            color: "white",
-            fontSize: 20,
-            fontWeight: "bold",
-          }}
-        >
-          Back
-        </Button>
+        <Grid item md={1} justifyContent="flex-end">
+          <Button
+            onClick={() => {
+              props.updateSearch(false, false, false);
+            }}
+            style={{
+              backgroundColor: "#666666",
+              color: "white",
+              fontSize: 20,
+              fontWeight: "bold",
+            }}
+            size="medium"
+            fullWidth
+            startIcon={<ArrowBack />}
+          >
+            Back
+          </Button>
+        </Grid>
       </Grid>
     </Grid>
   );
