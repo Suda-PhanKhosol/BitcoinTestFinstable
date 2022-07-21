@@ -86,7 +86,7 @@ export default function Test1(props) {
                   </Grid>
                   <Grid item md={6}>
                     <Typography style={{ fontSize: 30, color: "black" }}>
-                      20183.0 USDT
+                      {ftxData.price} USDT
                     </Typography>
                   </Grid>
                 </Grid>
